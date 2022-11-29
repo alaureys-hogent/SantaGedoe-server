@@ -4,7 +4,7 @@ module.exports = {
     disabled: false,
   },
   cors: {
-    origins: ['https://santagedoe-client.onrender.com/'],
+    origins: ['https://santagedoe-client.onrender.com'],
     maxAge: 3 * 60 * 60, // 3h in seconds
   },
   database: {
