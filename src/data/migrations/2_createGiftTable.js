@@ -8,7 +8,7 @@ module.exports = {
       
       table.string('name', 255);
       table.string('comments', 500);
-      table.string('url');
+      table.string('url', 500);
       table.boolean('isReserved');
       table.string('reservedBy');
       table.boolean('isReceived');
