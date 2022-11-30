@@ -27,8 +27,8 @@ module.exports = {
     jwt: {
       // secret comes via env
       expirationInterval: 3 * 24 * 60 * 60 * 1000, // ms (3 days)
-      issuer: 'santagedoe.hogent.be',
-      audience: 'santagedoe.hogent.be',
+      issuer: 'santagedoe.be',
+      audience: 'santagedoe.be',
     },
   },
 };
