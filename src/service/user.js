@@ -16,7 +16,8 @@ const debugLog = (message, meta = {}) => {
   this.logger.debug(message, meta);
 };
 
-const makeExposedUser = ({id, firstName, lastName, email, roles, img}) => ({id, firstName, lastName, email, roles, img});
+const makeExposedUser = ({id, firstName, lastName, email, roles, img}) => 
+  ({id, firstName, lastName, email, roles, img});
 
 const makeLoginData = async (user) => {
   const token = await generateJWT(user);
@@ -64,15 +65,15 @@ const register = async ({
 const login = async (email, password) => {
   const user =  await userRepository.findByEmail(email);
   if(!user){
-    throw ServiceError.unauthorized('The given email and password do not match');
+    throw ServiceError.unauthorized('Oops, no user with that email exists! Did you forget to sign up first?',
+      {type: 'email', message: 'Oops, no user with that email exists! Did you forget to sign up first?'});
   }
-
   const passwordValid = await verifyPassword(password, user.password_hash);
 
   if(!passwordValid){
-    throw ServiceError.unauthorized('The given email and password do not match');
+    throw ServiceError.unauthorized('Forgot your password? Bad luck! Try again if you dare...',
+      {type: 'password', message: 'Forgot your password? Bad luck! Try again if you dare...'});
   }
-
   return await makeLoginData(user);
 };
 
